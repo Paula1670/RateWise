@@ -7,9 +7,13 @@
       <div class="flex items-center" *ngIf="menuService.showSideBar">
         <a
           (click)="toggleSidebar()"
-          class="flex cursor-pointer items-center justify-center rounded bg-primary p-2 focus:outline-none focus:ring-1">
-          <svg-icon src="assets/icons/logo.svg"> </svg-icon>
+          class="rounded bg-primary p-2">
+          <svg-icon src="assets/icons/whiteStar.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
         </a>
+
+
+
+
         <b class="ml-1 pl-2 text-sm font-bold text-foreground">
           {{ appJson.displayName }}
         </b>
