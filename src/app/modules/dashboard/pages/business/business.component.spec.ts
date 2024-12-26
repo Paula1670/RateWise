@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BusinessComponent } from './business.component';
 
-import { NftChartCardComponent } from './nft-chart-card.component';
 
-describe('NftChartCardComponent', () => {
-  let component: NftChartCardComponent;
-  let fixture: ComponentFixture<NftChartCardComponent>;
+
+describe('BusinessComponent', () => {
+  let component: BusinessComponent;
+  let fixture: ComponentFixture<BusinessComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [NftChartCardComponent],
+    imports: [BusinessComponent],
 }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NftChartCardComponent);
+    fixture = TestBed.createComponent(BusinessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

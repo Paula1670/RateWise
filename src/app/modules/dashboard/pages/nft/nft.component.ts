@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '../../models/nft';
 import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-table/nft-auctions-table.component';
-import { NftChartCardComponent } from '../../components/nft/nft-chart-card/nft-chart-card.component';
 import { NftSingleCardComponent } from '../../components/nft/nft-single-card/nft-single-card.component';
 import { NftDualCardComponent } from '../../components/nft/nft-dual-card/nft-dual-card.component';
 import { NftHeaderComponent } from '../../components/nft/nft-header/nft-header.component';
@@ -14,7 +13,6 @@ import { NftHeaderComponent } from '../../components/nft/nft-header/nft-header.c
         NftHeaderComponent,
         NftDualCardComponent,
         NftSingleCardComponent,
-        NftChartCardComponent,
         NftAuctionsTableComponent,
     ],
 })
@@ -25,7 +23,7 @@ export class NftComponent implements OnInit {
     this.nft = [
       {
         id: 34356771,
-        title: 'Mc donald',
+        title: 'Buah',
         creator: 'Jhon Doe',
         instant_price: 4.2,
         price: 187.47,

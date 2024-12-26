@@ -9,7 +9,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Restaurantes',
-          route: '/dashboard/nfts',
+          route: '/dashboard/business', //business  //nfts
 
         },
 
