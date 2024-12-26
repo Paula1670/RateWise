@@ -1,22 +1,22 @@
 {
   "name": "angular-tailwind",
-  "displayName": "Angular Tailwind",
+  "displayName": "RateWise",
   "version": "0.9.1",
   "description": "Angular & Tailwind CSS Admin Dashboard Starter Kit, Free and Open Source",
-  "homepage": "https://github.com/lannodev/angular-tailwind#readme",
+  "homepage": "https://github.com/Paula1670/RateWise#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lannodev/angular-tailwind.git"
+    "url": "https://github.com/Paula1670/RateWise"
   },
   "keywords": [
     "angular",
-    "tailwind",
-    "starter-kit",
-    "tailwind-template",
+    "RateWise",
+    "users",
+    "negocios",
     "dark mode",
     "open source"
   ],
-  "author": "Luciano Oliveira <me@lanno.dev>",
+  "author": "Paula Pulido <paupulpeg@gmail.com>",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
