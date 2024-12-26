@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NftHeaderComponent } from '../../components/nft/nft-header/nft-header.component';
 import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-table/nft-auctions-table.component';
 import { BusinessDTO } from '../../models/businessDTO';
 import { BusinessCardComponent } from '../../components/Business/BusinessCard/BusinessCard.component';
+import { BusinessHeaderComponent } from '../../components/Business/BusinessHeader/BusinessHeader.component';
 
 @Component({
   selector: 'app-business',
   templateUrl: './business.component.html',
   standalone: true,
       imports: [
-          NftHeaderComponent,
+          BusinessHeaderComponent,
           BusinessCardComponent,
-
           NftAuctionsTableComponent,
       ],
 })
