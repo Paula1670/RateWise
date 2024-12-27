@@ -3,6 +3,7 @@ import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-tab
 import { BusinessDTO } from '../../models/businessDTO';
 import { BusinessCardComponent } from '../../components/Business/BusinessCard/BusinessCard.component';
 import { BusinessHeaderComponent } from '../../components/Business/BusinessHeader/BusinessHeader.component';
+import { BusinessService } from 'src/app/services/Business.service';
 
 @Component({
   selector: 'app-business',
@@ -18,8 +19,8 @@ export class BusinessComponent implements OnInit {
 
 business: Array<BusinessDTO>;
 
-  constructor() {
-    this.business = [
+   constructor() {
+   this.business = [
       {
   businessId: "tnhfDv5Il8EaGSXZGiuQGg",
   name: "Garaje",
@@ -123,7 +124,74 @@ business: Array<BusinessDTO>;
         },
       },
     ];
-  }
+
+ }
+ /*constructor(private businessService: BusinessService) {}
+
+ createBusiness() {
+   const jwtToken = 'YOUR_JWT_TOKEN';
+   const traceId = 'TRACE_ID_VALUE';
+   const businessData = {
+     business_id: 'Pns11112l4eNsfO8kk83dixA6A',
+     name: 'Abby Rappoport, LAC, CMQ',
+     address: '1616 Chapala St, Ste 2',
+     city: 'Santa Barbara',
+     state: 'CA',
+     postal_code: '93101',
+     latitude: 34.4266787,
+     longitude: -119.7111968,
+     stars: 5.0,
+     review_count: 7,
+     is_open: 0,
+     categories: [
+       'Doctors',
+       'Traditional Chinese Medicine',
+       'Naturopathic/Holistic',
+       'Acupuncture',
+       'Health & Medical',
+       'Nutritionists'
+     ],
+     attributes: {
+       BusinessAcceptsCreditCards: 'True',
+       NoiseLevel: 'average',
+       Ambience: '{"touristy": false, "hipster": false, "romantic": false, "divey": false, "intimate": false, "trendy": false, "upscale": false, "classy": false, "casual": false}',
+       RestaurantsDelivery: 'False',
+       RestaurantsTakeOut: 'True',
+       OutdoorSeating: 'False',
+       Alcohol: 'none',
+       BusinessParking: '{"garage": false, "street": false, "validated": false, "lot": false, "valet": false}',
+       RestaurantsReservations: 'False',
+       RestaurantsPriceRange2: '1',
+       GoodForMeal: '{"dessert": false, "latenight": false, "lunch": false, "dinner": false, "brunch": false, "breakfast": false}',
+       GoodForKids: 'True',
+       HasTV: 'False',
+       Caters: 'False',
+       RestaurantsTableService: 'False',
+       RestaurantsGoodForGroups: 'True',
+       BikeParking: 'False',
+       WiFi: 'no',
+       RestaurantsAttire: 'casual'
+     },
+     hours: {
+       Monday: '11:00-18:00',
+       Tuesday: '11:00-18:00',
+       Wednesday: '11:00-18:00',
+       Thursday: '11:00-18:00',
+       Friday: '11:00-19:00',
+       Saturday: '10:00-19:00',
+       Sunday: '11:00-18:00'
+     }
+   };
+
+   this.businessService.createBusiness(businessData, jwtToken, traceId).subscribe(
+     response => {
+       console.log('Business created successfully:', response);
+     },
+     error => {
+       console.error('Error creating business:', error);
+     }
+   );
+ }*/
 
   ngOnInit(): void {}
 

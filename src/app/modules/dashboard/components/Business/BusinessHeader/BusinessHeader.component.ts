@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-BusinessHeader',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BusinessHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+ navigateToRoute(): void{
+this.router.navigate(['/dashboard/createBusiness']);
+
+}
+
 
   ngOnInit() {
   }

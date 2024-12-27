@@ -3,15 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { NftComponent } from './pages/nft/nft.component';
 import { BusinessComponent } from './pages/business/business.component';
+import { FormBusinessComponent } from './pages/FormBusiness/FormBusiness.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'nfts', pathMatch: 'full' },
+      { path: '', redirectTo: 'business', pathMatch: 'full' },
       { path: 'nfts', component: NftComponent },
       { path: 'business', component: BusinessComponent },
+      { path: 'createBusiness', component: FormBusinessComponent },
       { path: '**', redirectTo: 'errors/404' },
     ],
   },
