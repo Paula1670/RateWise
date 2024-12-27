@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NftComponent } from './pages/nft/nft.component';
 import { BusinessComponent } from './pages/business/business.component';
 import { FormBusinessComponent } from './pages/FormBusiness/FormBusiness.component';
+import { SummaryBusinessComponent } from './pages/summaryBusiness/summaryBusiness.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'business', pathMatch: 'full' },
       { path: 'nfts', component: NftComponent },
       { path: 'business', component: BusinessComponent },
+      { path: 'summary', component: SummaryBusinessComponent },
       { path: 'createBusiness', component: FormBusinessComponent },
       { path: '**', redirectTo: 'errors/404' },
     ],
