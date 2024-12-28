@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BusinessDTO } from '../../../models/businessDTO';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-BusinessSummary',
   templateUrl: './BusinessSummary.component.html',
-  standalone:true
+  standalone:true,
+  imports:[NgFor, CommonModule]
 })
 export class BusinessSummaryComponent implements OnInit {
 
@@ -16,6 +18,8 @@ export class BusinessSummaryComponent implements OnInit {
 ngOnInit(): void {
 
 }
+
+
 
  // Método para generar la URL del mapa usando las coordenadas
 

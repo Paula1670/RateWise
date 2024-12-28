@@ -15,7 +15,7 @@
         <span class="text-base font-semibold text-primary-foreground">★</span>
       </div>
       <div>
-        <small class="text-xs text-muted-foreground">Rating</small>
+        <small class="text-xs text-muted-foreground">Puntuación: </small>
         <span class="text-sm font-semibold text-foreground">{{ business.stars }} / 5</span>
       </div>
     </div>
@@ -26,7 +26,7 @@
         <span class="text-base font-semibold text-primary-foreground">#</span>
       </div>
       <div>
-        <small class="text-xs text-muted-foreground">Reviews</small>
+        <small class="text-xs text-muted-foreground">Reseñas: </small>
         <span class="text-sm font-semibold text-foreground">{{ business.reviewCount }}</span>
       </div>
     </div>
@@ -35,9 +35,9 @@
     <div class="flex items-center space-x-2">
 
       <div>
-        <small class="text-xs text-muted-foreground">Status</small>
+        <small class="text-xs text-muted-foreground">Estado</small>
         <span class="text-sm font-semibold text-foreground">
-          {{ business.isOpen ? 'Open Now' : 'Closed' }}
+          {{ business.isOpen ? 'Abierto ahora' : 'Cerrado' }}
         </span>
       </div>
     </div>
