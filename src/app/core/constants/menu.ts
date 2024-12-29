@@ -24,7 +24,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/users.svg',
           label: 'Users',
-          route: '/components/table',
+          route: '/dashboard/users',//'/components/table',
         },
       ],
     },

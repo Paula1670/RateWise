@@ -5,6 +5,7 @@ import { NftComponent } from './pages/nft/nft.component';
 import { BusinessComponent } from './pages/business/business.component';
 import { FormBusinessComponent } from './pages/FormBusiness/FormBusiness.component';
 import { SummaryBusinessComponent } from './pages/summaryBusiness/summaryBusiness.component';
+import { UserComponent } from './pages/user/user.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'business', component: BusinessComponent },
       { path: 'summary', component: SummaryBusinessComponent },
       { path: 'createBusiness', component: FormBusinessComponent },
+      { path: 'users', component: UserComponent },
       { path: '**', redirectTo: 'errors/404' },
     ],
   },

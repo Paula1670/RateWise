@@ -1,0 +1,44 @@
+import { Component, Input } from '@angular/core';
+import { User } from '../../../../uikit/pages/table/model/user.model';
+import { FormsModule } from '@angular/forms';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { userDTOCompleto } from '../../../models/userDTOCompleto';
+import { UserDTOSMALL } from '../../../models/userDTOSMALL';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: '[app-table-row]',
+  standalone: true,
+  imports: [FormsModule, AngularSvgIconModule, CommonModule],
+  templateUrl: './table-row.component.html',
+  styleUrl: './table-row.component.scss',
+})
+export class TableRowComponent {
+  @Input() user !: UserDTOSMALL;
+  isDropdownOpen = false;
+ constructor(){}
+
+ ngOnInit() {}
+
+
+
+
+
+
+
+
+   toggleDropdown() {
+     this.isDropdownOpen = !this.isDropdownOpen;
+   }
+
+   // Métodos para manejar las opciones
+   handleOption1() {
+     console.log('Opción 1 seleccionada');
+     this.isDropdownOpen = false;
+   }
+
+   handleOption2() {
+     console.log('Opción 2 seleccionada');
+     this.isDropdownOpen = false;
+   }
+}
