@@ -23,7 +23,7 @@ export class SummaryBusinessComponent implements OnInit {
    longitude: -6.949175188221014,
    stars: 4.5,
    reviewCount: 1198,
-   isOpen: false,
+   isOpen: '0',
    attributes: {
      RestaurantsTakeOut: true,
      BusinessParking: {

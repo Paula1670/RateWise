@@ -32,7 +32,7 @@ business: Array<BusinessDTO>;
   longitude: -122.39612197,
   stars: 4.5,
   reviewCount: 1198,
-  isOpen: true,
+  isOpen: '1',
   attributes: {
     RestaurantsTakeOut: true,
     BusinessParking: {
@@ -68,7 +68,7 @@ business: Array<BusinessDTO>;
         longitude: -122.419416,
         stars: 3.5,
         reviewCount: 857,
-        isOpen: true,
+        isOpen: '1',
         attributes: {
           RestaurantsTakeOut: true,
           BusinessParking: {
@@ -101,7 +101,7 @@ business: Array<BusinessDTO>;
         longitude: -122.399456,
         stars: 3.8,
         reviewCount: 643,
-        isOpen: false,
+        isOpen: '0',
         attributes: {
           RestaurantsTakeOut: true,
           BusinessParking: {
