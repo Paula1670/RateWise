@@ -1,15 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BusinessDTO } from '../../models/businessDTO';
 import { BusinessSummaryComponent } from '../../components/Business/BusinessSummary/BusinessSummary.component';
+import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-table/nft-auctions-table.component';
+import { ReviewTableComponent } from '../../components/Review/review-table/review-table.component';
+
 
 @Component({
   selector: 'app-summaryBusiness',
   templateUrl: './summaryBusiness.component.html',
   standalone:true,
-  imports: [BusinessSummaryComponent],
+  imports: [BusinessSummaryComponent, ReviewTableComponent, NftAuctionsTableComponent],
 })
 export class SummaryBusinessComponent implements OnInit {
   @Input() business: BusinessDTO;
+
   constructor() {
     this.business =
        {
@@ -51,6 +55,7 @@ export class SummaryBusinessComponent implements OnInit {
   }
 
   ngOnInit() {
+    //YA SE AGREGARÁ
   }
 
 }

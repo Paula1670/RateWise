@@ -1,23 +1,23 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {  ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BusinessActionComponent } from './BusinessAction.component';
+import { ReviewTableItemComponent } from './review-table-item.component';
 
-describe('BusinessActionComponent', () => {
-  let component: BusinessActionComponent;
-  let fixture: ComponentFixture<BusinessActionComponent>;
+describe('ReviewTableItemComponent', () => {
+  let component: ReviewTableItemComponent;
+  let fixture: ComponentFixture<ReviewTableItemComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ BusinessActionComponent ]
+      declarations: [ ReviewTableItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BusinessActionComponent);
+    fixture = TestBed.createComponent(ReviewTableItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

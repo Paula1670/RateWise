@@ -3,21 +3,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BusinessActionComponent } from './BusinessAction.component';
+import { ReviewTableComponent } from './review-table.component';
 
-describe('BusinessActionComponent', () => {
-  let component: BusinessActionComponent;
-  let fixture: ComponentFixture<BusinessActionComponent>;
+describe('ReviewTableComponent', () => {
+  let component: ReviewTableComponent;
+  let fixture: ComponentFixture<ReviewTableComponent>;
 
-  beforeEach(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ BusinessActionComponent ]
+      declarations: [ ReviewTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BusinessActionComponent);
+    fixture = TestBed.createComponent(ReviewTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

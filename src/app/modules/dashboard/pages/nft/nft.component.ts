@@ -49,5 +49,6 @@ export class NftComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {//
+    }
 }
