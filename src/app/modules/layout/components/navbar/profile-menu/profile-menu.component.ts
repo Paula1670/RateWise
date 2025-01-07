@@ -36,7 +36,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ],
 })
 export class ProfileMenuComponent implements OnInit {
-  public isOpen = false;
+  public is_open = false;
   public profileMenu = [
     {
       title: 'Tu perfil',
@@ -93,7 +93,7 @@ export class ProfileMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   public toggleMenu(): void {
-    this.isOpen = !this.isOpen;
+    this.is_open = !this.is_open;
   }
 
   toggleThemeMode() {

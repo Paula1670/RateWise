@@ -15,14 +15,33 @@
 
     <p class="text-muted-foreground text-sm font-bold text-left">{{ business.address }}</p>
     <p class="text-muted-foreground text-sm font-bold text-left mb-2">
-      {{ business.city }}, {{ business.state }} {{ business.postalCode }}
+      {{ business.city }}, {{ business.state }} {{ business.postal_code }}
     </p>
     <p class="font-semibold text-left"
-       [class.text-green-500]="business.isOpen"
-       [class.text-red-500]="!business.isOpen">
-      {{ business.isOpen ? 'Abierto ahora' : 'Cerrado' }}
+       [class.text-green-500]="business.is_open"
+       [class.text-red-500]="!business.is_open">
+      {{ business.is_open ? 'Abierto ahora' : 'Cerrado' }}
     </p>
   </div>
+
+  <!-- Usuario con más tips -->
+  <div *ngIf="topTipUser; else noTips" class="mb-6">
+    <h3 class="text-2xl font-semibold mb-3 text-foreground text-left">Usuario más activo</h3>
+    <p class="text-muted-foreground text-sm font-bold text-left">
+      El usuario con más tips en este comercio es: <span class="text-foreground">{{this.NombreUsuario }}</span>.
+    </p>
+  </div>
+
+  <!-- Mensaje si no hay tips -->
+  <ng-template #noTips>
+    <div class="mb-6">
+      <h3 class="text-2xl font-semibold mb-3 text-foreground text-left">Usuario más activo</h3>
+      <p class="text-muted-foreground text-sm font-bold text-left">
+        Ningún usuario ha dejado propina por el momento.
+      </p>
+    </div>
+  </ng-template>
+
 
   <!-- Localización -->
   <div>

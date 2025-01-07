@@ -27,12 +27,12 @@ business: Array<BusinessDTO>;
   address: "475 3rd St",
   city: "San Francisco",
   state: "CA",
-  postalCode: "94107",
+  postal_code: "94107",
   latitude: 37.7817529521,
   longitude: -122.39612197,
   stars: 4.5,
   reviewCount: 1198,
-  isOpen: true,
+  is_open: '1',
   attributes: {
     RestaurantsTakeOut: true,
     BusinessParking: {
@@ -63,12 +63,12 @@ business: Array<BusinessDTO>;
         address: "1200 Market St",
         city: "San Francisco",
         state: "CA",
-        postalCode: "94103",
+        postal_code: "94103",
         latitude: 37.774929,
         longitude: -122.419416,
         stars: 3.5,
         reviewCount: 857,
-        isOpen: true,
+        is_open: '1',
         attributes: {
           RestaurantsTakeOut: true,
           BusinessParking: {
@@ -96,12 +96,12 @@ business: Array<BusinessDTO>;
         address: "250 Mission St",
         city: "San Francisco",
         state: "CA",
-        postalCode: "94105",
+        postal_code: "94105",
         latitude: 37.789123,
         longitude: -122.399456,
         stars: 3.8,
         reviewCount: 643,
-        isOpen: false,
+        is_open: '0',
         attributes: {
           RestaurantsTakeOut: true,
           BusinessParking: {

@@ -22,12 +22,12 @@ export class SummaryBusinessComponent implements OnInit {
    address: "475 3rd St",
    city: "San Francisco",
    state: "CA",
-   postalCode: "94107",
+   postal_code: "94107",
    latitude: 37.25363686594387,
    longitude: -6.949175188221014,
    stars: 4.5,
    reviewCount: 1198,
-   isOpen: false,
+   is_open: '0',
    attributes: {
      RestaurantsTakeOut: true,
      BusinessParking: {

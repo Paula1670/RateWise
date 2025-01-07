@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BusinessDTO } from '../../../models/businessDTO';
 import { CommonModule, NgFor } from '@angular/common';
+import { userDTOCompleto } from '../../../models/userDTOCompleto';
 
 @Component({
   selector: 'app-BusinessSummary',
@@ -11,6 +12,8 @@ import { CommonModule, NgFor } from '@angular/common';
 export class BusinessSummaryComponent implements OnInit {
 
   @Input() business: BusinessDTO = <BusinessDTO>{};
+  topTipUser: boolean=true;
+  NombreUsuario: string = "Laura";
 
   constructor() {
 

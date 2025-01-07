@@ -26,8 +26,8 @@ export class FormBusinessComponent implements OnInit {
         categories: ['', [Validators.required]],
         attributes: ['', [Validators.required]],
         hours: ['', [Validators.required]],
-        isOpen: ['no'],
-        postalCode: ['']
+        is_open: ['no'],
+        postal_code: ['']
 
     });
    }
@@ -40,20 +40,20 @@ this.router.navigate(['/dashboard/business']);
   }
 
   createBusiness() {
-    let isOpenNow= false;
-if(this.businessForm.value.isOpen=='si') {isOpenNow=true;}
+    let is_openNow= '0';
+if(this.businessForm.value.is_open=='si') {is_openNow='1';}
    this.service.createBusiness( {
           businessId: this.businessForm.value.businessId,
           name: this.businessForm.value.name,
           address: this.businessForm.value.address,
           city: this.businessForm.value.city,
           state: this.businessForm.value.state,
-          postalCode: this.businessForm.value.postalCode,
+          postal_code: this.businessForm.value.postal_code,
           latitude: this.businessForm.value.latitude,
           longitude: this.businessForm.value.longitude,
           stars: 0,
           reviewCount: 0,
-          isOpen: isOpenNow ,
+          is_open: is_openNow ,
           attributes: this.businessForm.value.attributes ? this.businessForm.value.attributes: null,
           categories: this.businessForm.value.categories? this.businessForm.value.categories : null,
           hours: this.businessForm.value.hours ? this.businessForm.value.hours : null

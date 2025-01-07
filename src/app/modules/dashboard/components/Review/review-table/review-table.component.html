@@ -4,10 +4,49 @@
       <h3 class="text-md font-bold text-foreground">Las reseñas más populares</h3>
       <span class="text-xs text-muted-foreground">Updated 37 minutes ago</span>
     </div>
+    <div class="flex">
+      <label class="relative text-muted-foreground">
+        <div class="absolute left-2.5 top-2.5">
+          <svg-icon src="./assets/icons/heroicons/outline/magnifying-glass.svg" [svgClass]="'h-4 w-4'"></svg-icon>
+        </div>
+        <input
+          name="search"
+          class="py-2 pl-8 pr-2"
+          placeholder="Buscar reseñas"
+          type="text"
+          (input)="onSearchChange($event)" />
+      </label>
+    </div>
+
+
+    @if(this.resenasMasCalidad){
+      <button
+        class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground "
+        (click)="cambiarResenasCalidad()">
+        Más calidad
+      </button>
+      }@else{
+        <button
+        class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground "
+        (click)="cambiarResenasCalidad()">
+        Menos calidad
+      </button>
+       }
+
+
+    @if(this.mejoresResenas){
+  <button
+    class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground "
+    (click)="cambiarResenas()">
+    Mostrar las peores
+  </button>
+  }@else{
     <button
-      class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground ">
-      History
-    </button>
+    class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground "
+    (click)="cambiarResenas()">
+    Mostrar las mejores
+  </button>
+   }
   </div>
 
   <div class="relative overflow-x-auto">
