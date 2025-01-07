@@ -51,9 +51,10 @@ this.router.navigate(['/dashboard/business']);
           stars: 0,
           reviewCount: 0,
           isOpen: '0',
-          attributes: this.businessForm.value.attributes,
-          categories: this.businessForm.value.categories,
-          hours: this.businessForm.value.hours
+          attributes: this.businessForm.value.attributes ? this.businessForm.value.attributes: null,
+          categories: this.businessForm.value.categories? this.businessForm.value.categories : null,
+          hours: this.businessForm.value.hours ? this.businessForm.value.hours : null
+
         }).subscribe(
           (response: any) => {
             console.log('Respuesta del servidor:', response);
