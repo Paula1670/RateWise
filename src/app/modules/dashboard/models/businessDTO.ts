@@ -9,7 +9,7 @@ export interface BusinessDTO {
   longitude: number; // Longitude
   stars: number; // Star rating (rounded to half-stars)
   reviewCount: number; // Number of reviews
-  isOpen: string; // true if open, false if closed
+  isOpen: boolean; // true if open, false if closed
   attributes: BusinessAttributesDTO; // Additional business attributes
   categories: string[]; // List of categories
   hours: Record<string, string>; // Hours mapped by day

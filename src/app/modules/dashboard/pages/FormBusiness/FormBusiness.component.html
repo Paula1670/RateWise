@@ -79,9 +79,16 @@
             step="any"
           />
         </div>
-
-
-
+      </div>
+      <div class="mb-4">
+        <label class="text-muted-foreground text-sm font-bold mb-2" for="postalCode">Código Postal</label>
+        <input
+          type="text"
+          id="postalCode"
+          formControlName="postalCode"
+          class="w-full px-4 py-2 border rounded-md"
+          placeholder="Ingrese el código postal"
+        />
       </div>
     </div>
 
@@ -108,6 +115,17 @@
           rows="3"
         ></textarea>
       </div>
+      <div class="mb-4">
+        <label class="text-muted-foreground text-sm font-bold mb-2" for="isOpen">¿Está abierto ahora?</label>
+        <select
+          id="isOpen"
+          formControlName="isOpen"
+          class="w-full px-4 py-2 border rounded-md"
+        >
+          <option value="yes">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </div>
     </div>
 
     <!-- Horarios -->
@@ -133,4 +151,3 @@
     </div>
   </form>
 </div>
-
