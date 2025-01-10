@@ -22,6 +22,7 @@ export class ReviewTableComponent implements OnInit {
   constructor(public filterService: TableFilterService, public service:SummaryBusinessService) {
     this.mejoresResenas = true;
     this.resenasMasCalidad=true;
+    this.getResenas();
    /* this.reviews = [
       {
         "reviewId": "rev12345",
@@ -82,7 +83,7 @@ export class ReviewTableComponent implements OnInit {
     this.filteredReviews = [...this.reviews]; // Inicialmente, todas las reseñas están visibles
   }
 
-  ngOnInit() {this.getResenas()}
+  ngOnInit() {this.getResenas();}
 
   cambiarResenas() {
     if (this.mejoresResenas) this.mejoresResenas = false;
