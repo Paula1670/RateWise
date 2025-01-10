@@ -22,7 +22,7 @@ export class ReviewTableComponent implements OnInit {
   constructor(public filterService: TableFilterService, public service:SummaryBusinessService) {
     this.mejoresResenas = true;
     this.resenasMasCalidad=true;
-    this.getResenas();
+
    /* this.reviews = [
       {
         "reviewId": "rev12345",
