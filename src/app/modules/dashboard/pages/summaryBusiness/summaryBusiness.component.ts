@@ -3,6 +3,7 @@ import { BusinessDTO } from '../../models/businessDTO';
 import { BusinessSummaryComponent } from '../../components/Business/BusinessSummary/BusinessSummary.component';
 import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-table/nft-auctions-table.component';
 import { ReviewTableComponent } from '../../components/Review/review-table/review-table.component';
+import { ReviewsDTO } from '../../models/reviewsDTO';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ReviewTableComponent } from '../../components/Review/review-table/revie
 })
 export class SummaryBusinessComponent implements OnInit {
   @Input() business: BusinessDTO;
-
+  reviewList: ReviewsDTO[]=[]
   constructor() {
     this.business =
        {
