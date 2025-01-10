@@ -13,10 +13,10 @@ import { SummaryBusinessService } from 'src/app/services/summaryBusiness.service
   imports: [ReviewTableItemComponent, NgFor, AngularSvgIconModule, NgIf]
 })
 export class ReviewTableComponent implements OnInit {
-
+  @Input() reviews: ReviewsDTO[] = [];
   public mejoresResenas: boolean;
   public resenasMasCalidad: boolean;
-  public reviews: ReviewsDTO[] = [];
+  //public reviews: ReviewsDTO[] = [];
   public filteredReviews: ReviewsDTO[] = []; // Variable para las reseñas filtradas
 
   constructor(public filterService: TableFilterService, public service:SummaryBusinessService) {
