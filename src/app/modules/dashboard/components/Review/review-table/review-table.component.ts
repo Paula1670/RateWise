@@ -82,7 +82,7 @@ export class ReviewTableComponent implements OnInit {
     this.filteredReviews = [...this.reviews]; // Inicialmente, todas las reseñas están visibles
   }
 
-  ngOnInit() {}
+  ngOnInit() {this.getResenas()}
 
   cambiarResenas() {
     if (this.mejoresResenas) this.mejoresResenas = false;
