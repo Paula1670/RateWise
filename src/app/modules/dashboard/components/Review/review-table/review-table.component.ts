@@ -4,6 +4,7 @@ import { ReviewTableItemComponent } from '../review-table-item/review-table-item
 import { NgFor, NgIf } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TableFilterService } from 'src/app/modules/uikit/pages/table/services/table-filter.service';
+import { SummaryBusinessService } from 'src/app/services/summaryBusiness.service';
 
 @Component({
   selector: 'app-review-table',
@@ -18,10 +19,10 @@ export class ReviewTableComponent implements OnInit {
   public reviews: ReviewsDTO[] = [];
   public filteredReviews: ReviewsDTO[] = []; // Variable para las reseñas filtradas
 
-  constructor(public filterService: TableFilterService) {
+  constructor(public filterService: TableFilterService, public service:SummaryBusinessService) {
     this.mejoresResenas = true;
     this.resenasMasCalidad=true;
-    this.reviews = [
+   /* this.reviews = [
       {
         "reviewId": "rev12345",
         "userId": "usr67890",
@@ -77,7 +78,7 @@ export class ReviewTableComponent implements OnInit {
         "funny": 0,
         "cool": 3
       }
-    ];
+    ];*/
     this.filteredReviews = [...this.reviews]; // Inicialmente, todas las reseñas están visibles
   }
 
@@ -103,4 +104,16 @@ export class ReviewTableComponent implements OnInit {
       review.text.toLowerCase().includes(searchTerm)
     );
   }
+
+  getResenas() {
+    this.service.GetResenasMejores().subscribe({
+      next: (resenas) => {
+        this.reviews = resenas;
+      },
+      error: (err) => {
+        console.error('Error al obtener reseñas:', err);
+      }
+    });
+  }
+
 }
