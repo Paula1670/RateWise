@@ -104,5 +104,5 @@ export class UserComponent implements OnInit {
         });
     });*/
 
-    ngOnInit() {}
+    ngOnInit() {this.getUsers();}
 }
