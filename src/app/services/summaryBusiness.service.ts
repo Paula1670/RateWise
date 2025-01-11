@@ -12,8 +12,7 @@ export class SummaryBusinessService {
 constructor(private http: HttpClient) { }
 
 GetResenasMejores(mejoresResenas: boolean, resenasMasCalidad: boolean, texto: string) {
-  console.log(mejoresResenas);
-  console.log(resenasMasCalidad);
+
   const headers = new HttpHeaders({
     'Authorization': 'FTYJT',
     'Accept': 'application/json',

@@ -9,12 +9,17 @@
         <div class="absolute left-2.5 top-2.5">
           <svg-icon src="./assets/icons/heroicons/outline/magnifying-glass.svg" [svgClass]="'h-4 w-4'"></svg-icon>
         </div>
-        <input
-          name="search"
-          class="py-2 pl-8 pr-2"
-          placeholder="Buscar reseñas"
-          type="text"
-          (input)="onSearchChange($event)" />
+
+          <input
+            name="search"
+            class="py-2 pl-8 pr-2"
+            placeholder="Buscar reseñas"
+            type="text"
+            [formControl]="control"
+
+          />
+
+
       </label>
     </div>
 
