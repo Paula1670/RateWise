@@ -67,10 +67,10 @@
       <!--end Table head-->
       <!--Table body-->
       <tbody>
-      @if(reviews.length === 0){
-        <span class="text-center text-xl font-semibold text-muted-foreground">
-          No hay ninguna review con las características seleccionadas para visualizar. </span>
-      }else{
+        @if(reviews.length == 0){
+          <span class="text-center text-xl font-semibold text-muted-foreground">
+            No hay ninguna review con las características seleccionadas para visualizar. </span>
+        }@else{
           @for(review of reviews;track review.reviewId){
         <tr>
 
