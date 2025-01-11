@@ -11,53 +11,28 @@ export class SummaryBusinessService {
 
 constructor(private http: HttpClient) { }
 
-GetResenasMejores() {
-   const headers = new HttpHeaders({
-        'Authorization': 'FTYJT',
-        'Accept': 'application/json',
-        'X-B3-TraceId': '1',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/summary'
-      });
-
-      return this.http.get<ReviewsDTO[]>(environment.UrlBackend + '/review/Pns2l4eNsfO8kk83dixA6A', { headers });
-}
-
-GetResenasPeores(): Observable<any>  {
+GetResenasMejores(mejoresResenas: boolean, resenasMasCalidad: boolean, texto: string) {
+  console.log(mejoresResenas);
+  console.log(resenasMasCalidad);
   const headers = new HttpHeaders({
-       'Authorization': 'FTYJT',
-       'Accept': 'application/json',
-       'X-B3-TraceId': '1',
-       'Content-Type': 'application/json',
-       'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/summary'
-     });
+    'Authorization': 'FTYJT',
+    'Accept': 'application/json',
+    'X-B3-TraceId': '1',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/summary'
+  });
 
-     return this.http.get<ReviewsDTO[]>(environment.UrlBackend + '/review/Pns2l4eNsfO8kk83dixA6A?showBestReviews=false ', { headers });
+  // Construimos la URL con los valores de los booleanos como parámetros de consulta
+  const url = `${environment.UrlBackend}/review/Pns2l4eNsfO8kk83dixA6A?showBestReviews=${mejoresResenas}&showQualityReviews=${resenasMasCalidad}&textLike=${texto}`;
+
+  return this.http.get<ReviewsDTO[]>(url, { headers });
 }
 
-GetResenasPeoresMasDetalladas(): Observable<any>  {
-  const headers = new HttpHeaders({
-       'Authorization': 'FTYJT',
-       'Accept': 'application/json',
-       'X-B3-TraceId': '1',
-       'Content-Type': 'application/json',
-       'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/summary'
-     });
 
-     return this.http.get<ReviewsDTO[]>(environment.UrlBackend + '/review/Pns2l4eNsfO8kk83dixA6A?showBestReviews=false&showQualityReviews=true ', { headers });
-}
 
-GetResenasPeoresMasDetalladasByText(): Observable<any>  {
-  const headers = new HttpHeaders({
-       'Authorization': 'FTYJT',
-       'Accept': 'application/json',
-       'X-B3-TraceId': '1',
-       'Content-Type': 'application/json',
-       'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/summary'
-     });
 
-     return this.http.get<ReviewsDTO[]>(environment.UrlBackend + '/review/Pns2l4eNsfO8kk83dixA6A?showBestReviews=false&showQualityReviews=true&textLike=decide ', { headers });
-}
+    // return this.http.get<ReviewsDTO[]>(environment.UrlBackend + '/review/Pns2l4eNsfO8kk83dixA6A?showBestReviews=false&showQualityReviews=true&textLike=decide ', { headers });
+
 
 
 }

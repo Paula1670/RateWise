@@ -19,17 +19,18 @@
     </div>
 
 
+
     @if(this.resenasMasCalidad){
       <button
         class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground "
         (click)="cambiarResenasCalidad()">
-        Más detalladas
+        Menos detalladas
       </button>
       }@else{
         <button
         class="flex-none rounded-md text-primary-foreground bg-primary px-4 py-2.5  font-semibold  hover:bg-muted hover:text-foreground "
         (click)="cambiarResenasCalidad()">
-        Menos detalladas
+        Más detalladas
       </button>
        }
 
@@ -66,7 +67,10 @@
       <!--end Table head-->
       <!--Table body-->
       <tbody>
-
+      @if(reviews.length === 0){
+        <span class="text-center text-xl font-semibold text-muted-foreground">
+          No hay ninguna review con las características seleccionadas para visualizar. </span>
+      }else{
           @for(review of reviews;track review.reviewId){
         <tr>
 
@@ -100,7 +104,7 @@
           </tr>
         }
 
-
+      }
       </tbody>
 
       <!--end::Table body-->

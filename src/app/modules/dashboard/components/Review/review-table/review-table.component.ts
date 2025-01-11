@@ -18,11 +18,12 @@ export class ReviewTableComponent implements OnInit {
   public resenasMasCalidad: boolean;
   //public reviews: ReviewsDTO[] = [];
   public filteredReviews: ReviewsDTO[] = []; // Variable para las reseñas filtradas
+  public texto:string;
 
   constructor(public filterService: TableFilterService, public service:SummaryBusinessService) {
     this.mejoresResenas = true;
     this.resenasMasCalidad=true;
-
+    this.texto="ee";
    /* this.reviews = [
       {
         "reviewId": "rev12345",
@@ -80,19 +81,21 @@ export class ReviewTableComponent implements OnInit {
         "cool": 3
       }
     ];*/
-    this.filteredReviews = [...this.reviews]; // Inicialmente, todas las reseñas están visibles
+
   }
 
-  ngOnInit() {this.getResenas();}
+  ngOnInit() {this.getResenas(this.mejoresResenas, this.resenasMasCalidad, this.texto);}
 
   cambiarResenas() {
     if (this.mejoresResenas) this.mejoresResenas = false;
     else this.mejoresResenas = true;
+    this.reloadPage();
   }
 
   cambiarResenasCalidad() {
     if (this.resenasMasCalidad) this.resenasMasCalidad = false;
     else this.resenasMasCalidad = true;
+    this.reloadPage();
   }
 
   // Función para manejar el cambio en la búsqueda
@@ -105,9 +108,21 @@ export class ReviewTableComponent implements OnInit {
       review.text.toLowerCase().includes(searchTerm)
     );
   }
+  reloadPage() {
+    this.service.GetResenasMejores(this.mejoresResenas, this.resenasMasCalidad, this.texto).subscribe({
+      next: (resenas) => {
+        
+        this.reviews = resenas;  // Actualiza las reseñas con la respuesta
+       
+      },
+      error: (err) => {
+        console.error('Error al obtener reseñas:', err);
+      }
+    });
 
-  getResenas() {
-    this.service.GetResenasMejores().subscribe({
+  }
+  getResenas(mejoresResenas: boolean, resenasMasCalidad: boolean, texto:string) {
+    this.service.GetResenasMejores(mejoresResenas, resenasMasCalidad, texto).subscribe({
       next: (resenas) => {
         this.reviews = resenas;
       },
