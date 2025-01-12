@@ -35,7 +35,7 @@ export class BusinessService {
     });
 
     // Construimos la URL con los parámetros de consulta
-    const url = environment.UrlBackend +'/business?filters=name%7Ceq%7C${nombre}&city%7Ceq%7C${ciudad}&Offset=${offset}&Limit=30';
+    const url = environment.UrlBackend +`/business?filters=name%7Ceq%7C${nombre}&city%7Ceq%7C${ciudad}&Offset=${offset}&Limit=30`;
 
     return this.http.get<any>(url, { headers }).pipe(
       map(response => {

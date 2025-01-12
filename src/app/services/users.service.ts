@@ -17,7 +17,7 @@ constructor(private http: HttpClient) { }
 
 getUsers(offset: number, limit: number): Observable<{ users: UserDTOSMALL[]; pagination: Pagination }> {
   // Configuramos las cabeceras
-
+console.log(offset);
 
   const headers = new HttpHeaders({
     'Authorization': 'FTYJT',
@@ -28,7 +28,7 @@ getUsers(offset: number, limit: number): Observable<{ users: UserDTOSMALL[]; pag
   });
 
   // Construimos la URL con los parámetros de consulta
-  const url = environment.UrlBackend +'?Offset=${offset}&Limit=${limit}';
+  const url = environment.UrlBackend +`?Offset=${offset}&Limit=${limit}`;
 
   return this.http.get<any>(url, { headers }).pipe(
     map(response => {
