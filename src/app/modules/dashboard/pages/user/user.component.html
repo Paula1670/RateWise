@@ -3,7 +3,7 @@
     <h3 class="font-semibold text-foreground">Comunidad</h3>
     <div class="space-x-1 text-xs font-medium text-muted-foreground">
       <a href="" class="hover:text-primary">Todos los miembros:</a>
-      <span class="text-foreground">xxx</span>
+      <span class="text-foreground">{{ pagination.totalItems }}</span>
     </div>
   </div>
   <div class="inline-block space-x-4">
@@ -16,16 +16,10 @@
 
 <div class="flex min-w-full flex-col rounded-xl border border-muted/20 bg-background p-2">
   <div class="flex flex-wrap items-center justify-between gap-2 py-3 px-5">
-    <h3 class="text-sm font-medium text-muted-foreground">Showing 08 of 100 users</h3>
+    <h3 class="text-sm font-medium text-muted-foreground">Mostrando  {{itemsPerPage}} de {{ pagination.totalItems }} usuarios</h3>
     <div class="flex flex-wrap gap-2">
 
-      <div class="flex flex-wrap gap-2.5">
-
-        <select name="order" class="w-28 p-2 text-muted-foreground" (change)="onOrderChange()">
-          <option value="1">Más recientes</option>
-          <option value="2">Más antiguos</option>
-        </select>
-      </div>
+      
     </div>
   </div>
   <div
@@ -50,7 +44,7 @@
 
   <div class="flex flex-wrap items-center justify-between gap-2 py-3 px-5 text-xs text-muted-foreground">
     <div class="order-2 flex items-center gap-2 md:order-1">
-      Show
+      Mostrar
       <select class="w-16 p-2" (change)="onItemsPerPageChange($event)">
         <option value="5">5</option>
         <option value="10" selected>10</option>
@@ -58,11 +52,10 @@
         <option value="30">30</option>
         <option value="50">50</option>
       </select>
-      per page
+      por página
     </div>
 
   <div class="order-1 flex items-center gap-4 md:order-2">
-  <span>{{ pagination.currentPage }} de {{ totalPages }}</span>
 
       <div class="inline-flex items-center gap-1">
         <button

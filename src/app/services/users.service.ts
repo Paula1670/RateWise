@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { userDTOCompleto } from '../modules/dashboard/models/userDTOCompleto';
 import { environment } from 'src/environments/environment';
 import { UserDTOSMALL } from '../modules/dashboard/models/userDTOSMALL';
 import { Pagination } from '../modules/dashboard/models/pagination';

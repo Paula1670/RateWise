@@ -7,7 +7,6 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { FormControl, FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UsersService } from 'src/app/services/users.service';
-import { userDTOCompleto } from '../../models/userDTOCompleto';
 import { UserDTOSMALL } from '../../models/userDTOSMALL';
 import { Pagination } from '../../models/pagination';
 

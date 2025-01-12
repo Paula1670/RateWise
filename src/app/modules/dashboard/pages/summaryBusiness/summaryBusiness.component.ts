@@ -4,6 +4,7 @@ import { BusinessSummaryComponent } from '../../components/Business/BusinessSumm
 import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-table/nft-auctions-table.component';
 import { ReviewTableComponent } from '../../components/Review/review-table/review-table.component';
 import { ReviewsDTO } from '../../models/reviewsDTO';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,50 +14,24 @@ import { ReviewsDTO } from '../../models/reviewsDTO';
   imports: [BusinessSummaryComponent, ReviewTableComponent, NftAuctionsTableComponent],
 })
 export class SummaryBusinessComponent implements OnInit {
-  @Input() business: BusinessDTO;
+  business: BusinessDTO = <BusinessDTO>{};
   reviewList: ReviewsDTO[]=[]
-  constructor() {
-    this.business =
-       {
-   businessId: "Pns2l4eNsfO8kk83dixA6A",
-   name: "Garaje",
-   address: "475 3rd St",
-   city: "San Francisco",
-   state: "CA",
-   postal_code: "94107",
-   latitude: 37.25363686594387,
-   longitude: -6.949175188221014,
-   stars: 4.5,
-   reviewCount: 1198,
-   is_open: '0',
-   attributes: {
-     RestaurantsTakeOut: true,
-     BusinessParking: {
-       garage: false,
-       street: true,
-       validated: false,
-       lot: false,
-       valet: false,
-     },
-   },
-
-   categories: ["Mexican", "Burgers", "Gastropubs"],
-   hours: {
-     Monday: "10:00-21:00",
-     Tuesday: "10:00-21:00",
-     Wednesday: "10:00-21:00",
-     Thursday: "10:00-21:00",
-     Friday: "10:00-21:00",
-     Saturday: "10:00-21:00",
-     Sunday: "11:00-18:00",
-   },
-
+  constructor(private router: Router) {
+    
 
        }
-  }
+  
 
-  ngOnInit() {
-    //YA SE AGREGARÁ
-  }
+       ngOnInit(): void {
+        console.log("hola");
+        const state = history.state as { business: BusinessDTO };
+        if (state?.business) {
+          this.business = state.business;
+          console.log(this.business);
+        } else {
+          console.error('No se encontraron datos del negocio en el estado de navegación');
+        }
+      }
+      
 
 }

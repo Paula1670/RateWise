@@ -25,6 +25,7 @@ export class BusinessComponent implements OnInit {
   control= new FormControl();
 
   public ciudad:string;
+  public businessId: number;
 
   public nombre:string;
   paginatedBusiness: BusinessDTO[] = [];
@@ -39,6 +40,7 @@ export class BusinessComponent implements OnInit {
     constructor(private http: HttpClient, public service:BusinessService,private router: Router) {
 this.ciudad='';
 this.nombre='';
+this.businessId=0;
     }
 
 //filtros
@@ -91,10 +93,10 @@ onOrderChange() {
     }
     ngOnInit() {this.getBusiness();}
 
-    navigateToRoute(): void{
-      this.router.navigate(['/dashboard/summary']);
-
-
+    navigateToRoute(business: BusinessDTO): void{
+      this.router.navigate(['/dashboard/summary' ],{state:{business}});
+      console.log("navegar");
+console.log(business);
         }
 
 }

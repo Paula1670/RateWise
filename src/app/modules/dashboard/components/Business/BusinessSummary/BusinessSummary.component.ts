@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BusinessDTO } from '../../../models/businessDTO';
 import { CommonModule, NgFor } from '@angular/common';
-import { userDTOCompleto } from '../../../models/userDTOCompleto';
 
 @Component({
   selector: 'app-BusinessSummary',

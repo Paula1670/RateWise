@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { User } from '../../../../uikit/pages/table/model/user.model';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { userDTOCompleto } from '../../../models/userDTOCompleto';
 import { UserDTOSMALL } from '../../../models/userDTOSMALL';
 import { CommonModule } from '@angular/common';
 
