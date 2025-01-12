@@ -20,7 +20,7 @@ export class SignInComponent implements OnInit {
   constructor(private readonly _formBuilder: FormBuilder, private readonly _router: Router) {}
 
   onClick() {
-    console.log('Button clicked');
+
   }
 
   ngOnInit(): void {

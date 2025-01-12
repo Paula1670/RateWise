@@ -12,8 +12,9 @@ export class SummaryBusinessService {
 
 constructor(private http: HttpClient) { }
 
-GetResenasMejores(mejoresResenas: boolean, resenasMasCalidad: boolean, texto: string) {
-
+GetResenasMejores(id:string,mejoresResenas: boolean, resenasMasCalidad: boolean, texto: string) {
+  console.log("servicio");
+  console.log(id);
   const headers = new HttpHeaders({
     'Authorization': 'FTYJT',
     'Accept': 'application/json',
@@ -21,9 +22,11 @@ GetResenasMejores(mejoresResenas: boolean, resenasMasCalidad: boolean, texto: st
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/summary'
   });
-
+let url;
   // Construimos la URL con los valores de los booleanos como parámetros de consulta
-  const url = `${environment.UrlBackend}/review/Pns2l4eNsfO8kk83dixA6A?showBestReviews=${mejoresResenas}&showQualityReviews=${resenasMasCalidad}&textLike=${texto}`;
+  if(texto==""){  url = `${environment.UrlBackend}/review/${id}?showBestReviews=${mejoresResenas}&showQualityReviews=${resenasMasCalidad}`;}
+  else{  url = `${environment.UrlBackend}/review/${id}?showBestReviews=${mejoresResenas}&showQualityReviews=${resenasMasCalidad}&textLike=${texto}`;}
+ 
 
   return this.http.get<ReviewsDTO[]>(url, { headers });
 }
@@ -40,7 +43,7 @@ GetUsuarioFavorito(businessId: string) {
 
   // Construimos la URL con los valores de los booleanos como parámetros de consulta
   const url = `${environment.UrlBackend}/tips/business/${businessId}` ;
-console.log(url);
+
   return this.http.get<usuarioFavoritoDTO>(url, { headers });
 }
 

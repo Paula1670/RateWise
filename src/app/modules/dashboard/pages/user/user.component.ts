@@ -46,13 +46,11 @@ onOrderChange() {
 
 getUsers(): void {
   const offset = this.currentPage - 1;
-  console.log('Offset calculado:', offset);
 
   this.service.getUsers(offset, this.itemsPerPage).subscribe({
     next: (data) => {
       this.paginatedUsers = data.users; // Asigna los usuarios devueltos directamente
       this.pagination = data.pagination;
-      console.log('Usuarios obtenidos:', this.paginatedUsers); // Verifica que los usuarios se asignen correctamente
     },
     error: (err) => {
       console.error('Error al obtener usuarios:', err);

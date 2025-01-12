@@ -95,7 +95,7 @@ onOrderChange() {
 
     navigateToRoute(business: BusinessDTO): void{
       this.router.navigate(['/dashboard/summary' ],{state:{business}});
-      console.log("navegar");
+
 
         }
 

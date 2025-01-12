@@ -18,6 +18,8 @@ export class ReviewTableComponent implements OnInit {
   @Input() reviews: ReviewsDTO[] = [];
   public mejoresResenas: boolean;
   public resenasMasCalidad: boolean;
+  @Input() idBusiness: string;
+
   //public reviews: ReviewsDTO[] = [];
   public filteredReviews: ReviewsDTO[] = []; // Variable para las reseñas filtradas
   public texto:string;
@@ -26,11 +28,11 @@ export class ReviewTableComponent implements OnInit {
     this.mejoresResenas = true;
     this.resenasMasCalidad=true;
     this.texto="";
-
+    this.idBusiness="";
 
   }
 
-  ngOnInit() {this.getResenas(this.mejoresResenas, this.resenasMasCalidad, this.texto);
+  ngOnInit() {this.getResenas(this.idBusiness,this.mejoresResenas, this.resenasMasCalidad, this.texto);
     this.observerChangeSearch();
 
 
@@ -38,7 +40,7 @@ export class ReviewTableComponent implements OnInit {
 
   observerChangeSearch() {
     this.control.valueChanges.subscribe(query => {
-    this.getResenas(this.mejoresResenas, this.resenasMasCalidad, query);
+    this.getResenas(this.idBusiness, this.mejoresResenas, this.resenasMasCalidad, query);
     });
   }
   cambiarResenas() {
@@ -55,7 +57,7 @@ export class ReviewTableComponent implements OnInit {
 
 
   reloadPage() {
-    this.service.GetResenasMejores(this.mejoresResenas, this.resenasMasCalidad, this.texto).subscribe({
+    this.service.GetResenasMejores(this.idBusiness, this.mejoresResenas, this.resenasMasCalidad, this.texto ).subscribe({
       next: (resenas) => {
 
         this.reviews = resenas;  // Actualiza las reseñas con la respuesta
@@ -67,11 +69,12 @@ export class ReviewTableComponent implements OnInit {
     });
 
   }
-  getResenas(mejoresResenas: boolean, resenasMasCalidad: boolean, texto:string) {
-
-    this.service.GetResenasMejores(mejoresResenas, resenasMasCalidad, texto).subscribe({
+  getResenas(id:string, mejoresResenas: boolean, resenasMasCalidad: boolean, texto:string) {
+    console.log(id);
+    this.service.GetResenasMejores(this.idBusiness, mejoresResenas, resenasMasCalidad, texto).subscribe({
       next: (resenas) => {
         this.reviews = resenas;
+        console.log(resenas);
       },
       error: (err) => {
         console.error('Error al obtener reseñas:', err);

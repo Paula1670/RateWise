@@ -32,12 +32,10 @@ export class TableRowComponent {
 
    // Métodos para manejar las opciones
    handleOption1() {
-     console.log('Opción 1 seleccionada');
      this.isDropdownOpen = false;
    }
 
    handleOption2() {
-     console.log('Opción 2 seleccionada');
      this.isDropdownOpen = false;
    }
 }
