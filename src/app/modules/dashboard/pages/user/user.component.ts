@@ -56,11 +56,7 @@ getUsers(): void {
       console.error('Error al obtener usuarios:', err);
     },
   });
-}
-
-
-    
-
+} 
     //Paginación
     changePage(newPage: number): void {
       if (newPage > 0 && newPage <= this.pagination.totalPages) {
@@ -79,4 +75,6 @@ getUsers(): void {
 
     }
     ngOnInit() {this.getUsers();}
+
+   
 }

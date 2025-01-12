@@ -4,10 +4,11 @@ import { BusinessDTO } from '../../models/businessDTO';
 import { BusinessCardComponent } from '../../components/Business/BusinessCard/BusinessCard.component';
 import { BusinessHeaderComponent } from '../../components/Business/BusinessHeader/BusinessHeader.component';
 import { BusinessService } from 'src/app/services/Business.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { Pagination } from '../../models/pagination';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
   selector: 'app-business',
@@ -17,6 +18,8 @@ import { Router } from '@angular/router';
           BusinessHeaderComponent,
           BusinessCardComponent,
           NftAuctionsTableComponent,
+          AngularSvgIconModule,
+                FormsModule,
       ],
 })
 export class BusinessComponent implements OnInit {
@@ -38,9 +41,9 @@ export class BusinessComponent implements OnInit {
   itemsPerPage: number = 10;
   currentPage: number = 1;
     constructor(private http: HttpClient, public service:BusinessService,private router: Router) {
-this.ciudad='';
-this.nombre='';
-this.businessId=0;
+    this.ciudad='';
+    this.nombre='';
+    this.businessId=0;
     }
 
 //filtros
@@ -51,7 +54,7 @@ onOrderChange() {
 }
 
     getBusiness(): void {
-      const offset = (this.currentPage - 1) * this.itemsPerPage;
+      const offset = (this.currentPage - 1) ;
       this.service.getBusiness(offset,this.ciudad, this.nombre, ).subscribe({
         next: (data) => {
           this.business = data.business;
@@ -62,6 +65,9 @@ onOrderChange() {
           console.error('Error al obtener usuarios:', err);
         },
       });
+
+
+      
     }
 
     updatePaginatedUsers(): void {
@@ -69,14 +75,12 @@ onOrderChange() {
       this.paginatedBusiness = this.business.slice(startIndex, startIndex + this.itemsPerPage);
     }
 
-    get totalPages(): number {
-      return Math.ceil(this.pagination.totalItems / this.itemsPerPage);
-    }
+   
 
 
     //Paginación
     changePage(newPage: number): void {
-      if (newPage > 0 && newPage <= this.totalPages) {
+      if (newPage > 0 && newPage <= this.pagination.totalPages) {
         this.currentPage = newPage;
         this.getBusiness();
       }

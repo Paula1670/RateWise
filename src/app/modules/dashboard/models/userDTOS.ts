@@ -1,5 +1,5 @@
 export interface UserDTO {
-    user_id: string;
+    userId: string;
     name: string;
     review_count: number;
     yelpingSince: Date;

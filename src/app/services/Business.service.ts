@@ -26,6 +26,7 @@ export class BusinessService {
 
   getBusiness(offset: number, nombre: string, ciudad:string): Observable<{ business: BusinessDTO[]; pagination: Pagination }> {
     // Configuramos las cabeceras
+
     const headers = new HttpHeaders({
       'Authorization': 'FTYJT',
       'Accept': 'application/json',
@@ -37,7 +38,7 @@ export class BusinessService {
     // Construimos la URL con los parámetros de consulta
     //const url = environment.UrlBackend +`/business?filters=name%7Ceq%7C${nombre}&city%7Ceq%7C${ciudad}&Offset=${offset}&Limit=30`;
 
-    const url = environment.UrlBackend +`/business?Offset=${offset}&Limit=30`;
+    const url = environment.UrlBackend +`/business?Offset=${offset}&Limit=40`;
 
     return this.http.get<any>(url, { headers }).pipe(
       map(response => {

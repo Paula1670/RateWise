@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { UserDTO } from '../../../models/userDTOS';
 import { CommonModule } from '@angular/common';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: '[app-table-row]',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class TableRowComponent {
   @Input() user !: UserDTO;
   isDropdownOpen = false;
- constructor(){}
+ constructor(public service: UsersService){}
 
  ngOnInit() {}
 
@@ -24,18 +25,19 @@ export class TableRowComponent {
 
 
 
-
-
-   toggleDropdown() {
-     this.isDropdownOpen = !this.isDropdownOpen;
-   }
-
-   // Métodos para manejar las opciones
-   handleOption1() {
-     this.isDropdownOpen = false;
-   }
-
-   handleOption2() {
-     this.isDropdownOpen = false;
-   }
+ Delete_User(id: string) {
+  console.log(id);
+  if (id) {
+    this.service.deleteUser(id).subscribe(
+      (response) => {
+        console.log('Respuesta del servidor:', response);
+        window.location.reload();
+      },
+      (error) => {
+        console.error('Error al llamar al endpoint:', error);
+        window.location.reload();
+      }
+    );
+  }
+}
 }

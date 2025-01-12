@@ -44,5 +44,24 @@ getUsers(offset: number, limit: number): Observable<{ users: UserDTO[]; paginati
     })
   );
 }
+
+
+deleteUser(id: string){
+  // Configuramos las cabeceras
+console.log(id);
+
+  const headers = new HttpHeaders({
+    'Authorization': 'FTYJT',
+    'Accept': 'application/json',
+    'X-B3-TraceId': '1',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'http://localhost:4200/dashboard/users',
+  });
+
+  // Construimos la URL con los parámetros de consulta
+  const url = environment.UrlBackend +`/user/${id}`;
+
+  return this.http.delete(url, { headers });
+}
 }
 
