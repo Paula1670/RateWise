@@ -73,7 +73,7 @@ onOrderChange() {
     changePage(newPage: number): void {
       if (newPage > 0 && newPage <= this.totalPages) {
         this.currentPage = newPage;
-        this.getUsers(); // Llama al servicio para cargar los usuarios de la nueva página
+        this.getUsers();
       }
     }
 

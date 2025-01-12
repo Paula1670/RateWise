@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class BusinessCardComponent implements OnInit {
 
 
-  @Input() business: BusinessDTO = <BusinessDTO>{};
+  @Input() business!: BusinessDTO ;
   constructor(private router: Router) {}
   navigateToRoute(): void{
 this.router.navigate(['/dashboard/summary']);
