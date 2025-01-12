@@ -44,33 +44,28 @@ onOrderChange() {
   });
 }
 
-    getUsers(): void {
-      const offset = (this.currentPage - 1) * this.itemsPerPage;
-      this.service.getUsers(offset, this.itemsPerPage).subscribe({
-        next: (data) => {
-          this.users = data.users;
-          this.pagination = data.pagination;
-          this.updatePaginatedUsers();
-        },
-        error: (err) => {
-          console.error('Error al obtener usuarios:', err);
-        },
-      });
-    }
+getUsers(): void {
+  const offset = this.currentPage - 1;
+  console.log('Offset calculado:', offset);
 
-    updatePaginatedUsers(): void {
-      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-      this.paginatedUsers = this.users.slice(startIndex, startIndex + this.itemsPerPage);
-    }
+  this.service.getUsers(offset, this.itemsPerPage).subscribe({
+    next: (data) => {
+      this.paginatedUsers = data.users; // Asigna los usuarios devueltos directamente
+      this.pagination = data.pagination;
+      console.log('Usuarios obtenidos:', this.paginatedUsers); // Verifica que los usuarios se asignen correctamente
+    },
+    error: (err) => {
+      console.error('Error al obtener usuarios:', err);
+    },
+  });
+}
 
-    get totalPages(): number {
-      return Math.ceil(this.pagination.totalItems / this.itemsPerPage);
-    }
 
+    
 
     //Paginación
     changePage(newPage: number): void {
-      if (newPage > 0 && newPage <= this.totalPages) {
+      if (newPage > 0 && newPage <= this.pagination.totalPages) {
         this.currentPage = newPage;
         this.getUsers();
       }

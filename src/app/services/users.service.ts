@@ -31,6 +31,7 @@ getUsers(offset: number, limit: number): Observable<{ users: UserDTO[]; paginati
 
   return this.http.get<any>(url, { headers }).pipe(
     map(response => {
+      
       const users = response.items as UserDTO[];
       const pagination: Pagination = {
         currentPage: response.currentPage,
@@ -38,6 +39,7 @@ getUsers(offset: number, limit: number): Observable<{ users: UserDTO[]; paginati
         totalPages: response.totalPages,
         hasNext: response.hasNext,
       };
+   
       return { users, pagination };
     })
   );

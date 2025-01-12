@@ -6,7 +6,7 @@ export interface UserDTO {
     friendsCount: number;
     votesCount:number;
     fans: number;
-    average_stars: number;
+    averageStars: number;
     complimentCount: number;
     selected: boolean;
 
