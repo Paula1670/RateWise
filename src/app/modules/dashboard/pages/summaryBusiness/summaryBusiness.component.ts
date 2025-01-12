@@ -5,6 +5,8 @@ import { NftAuctionsTableComponent } from '../../components/nft/nft-auctions-tab
 import { ReviewTableComponent } from '../../components/Review/review-table/review-table.component';
 import { ReviewsDTO } from '../../models/reviewsDTO';
 import { Router } from '@angular/router';
+import { SummaryBusinessService } from 'src/app/services/summaryBusiness.service';
+import { usuarioFavoritoDTO } from '../../models/usuarioFavoritoDTO';
 
 
 @Component({
@@ -15,19 +17,27 @@ import { Router } from '@angular/router';
 })
 export class SummaryBusinessComponent implements OnInit {
   business: BusinessDTO = <BusinessDTO>{};
-  reviewList: ReviewsDTO[]=[]
-  constructor(private router: Router) {
-    
-
+  reviewList: ReviewsDTO[]=[];
+  usuario:usuarioFavoritoDTO= <usuarioFavoritoDTO>{};
+  constructor(private router: Router, private service:SummaryBusinessService) {
+ 
        }
   
 
        ngOnInit(): void {
-        console.log("hola");
         const state = history.state as { business: BusinessDTO };
         if (state?.business) {
           this.business = state.business;
-          console.log(this.business);
+          this.service.GetUsuarioFavorito(this.business.business_id).subscribe({
+            next: (usuarioFavorito: usuarioFavoritoDTO) => {
+              this.usuario = usuarioFavorito;
+              console.log("Usuario favorito cargado:", this.usuario);
+            
+            },
+            error: (err) => {
+              console.error("Error al cargar el usuario favorito:", err);
+            }
+          });
         } else {
           console.error('No se encontraron datos del negocio en el estado de navegación');
         }

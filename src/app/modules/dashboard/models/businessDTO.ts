@@ -1,5 +1,5 @@
 export interface BusinessDTO {
-  businessId: string; // Unique string identifier for the business
+  business_id: string; // Unique string identifier for the business
   name: string; // Name of the business
   address: string; // Full address
   city: string; // City where the business is located

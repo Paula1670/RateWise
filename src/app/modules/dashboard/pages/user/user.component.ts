@@ -7,7 +7,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { FormControl, FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UsersService } from 'src/app/services/users.service';
-import { UserDTOSMALL } from '../../models/userDTOSMALL';
+import { UserDTO } from '../../models/userDTOS';
 import { Pagination } from '../../models/pagination';
 
 @Component({
@@ -22,9 +22,9 @@ import { Pagination } from '../../models/pagination';
       TableActionComponent,]
 })
 export class UserComponent implements OnInit {
- @Input() users: UserDTOSMALL[] = [];
+ @Input() users: UserDTO[] = [];
   control= new FormControl();
-  paginatedUsers: UserDTOSMALL[] = [];
+  paginatedUsers: UserDTO[] = [];
   pagination: Pagination = {
     currentPage: 1,
     totalItems: 0,

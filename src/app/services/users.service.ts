@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { UserDTOSMALL } from '../modules/dashboard/models/userDTOSMALL';
+import { UserDTO } from '../modules/dashboard/models/userDTOS';
 import { Pagination } from '../modules/dashboard/models/pagination';
 import { map, Observable } from 'rxjs';
 
@@ -14,7 +14,7 @@ constructor(private http: HttpClient) { }
 
 
 
-getUsers(offset: number, limit: number): Observable<{ users: UserDTOSMALL[]; pagination: Pagination }> {
+getUsers(offset: number, limit: number): Observable<{ users: UserDTO[]; pagination: Pagination }> {
   // Configuramos las cabeceras
 
 
@@ -31,7 +31,7 @@ getUsers(offset: number, limit: number): Observable<{ users: UserDTOSMALL[]; pag
 
   return this.http.get<any>(url, { headers }).pipe(
     map(response => {
-      const users = response.items as UserDTOSMALL[];
+      const users = response.items as UserDTO[];
       const pagination: Pagination = {
         currentPage: response.currentPage,
         totalItems: response.totalItems,

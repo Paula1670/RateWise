@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from '../../../../uikit/pages/table/model/user.model';
 import { FormsModule } from '@angular/forms';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { UserDTOSMALL } from '../../../models/userDTOSMALL';
+import { UserDTO } from '../../../models/userDTOS';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './table-row.component.scss',
 })
 export class TableRowComponent {
-  @Input() user !: UserDTOSMALL;
+  @Input() user !: UserDTO;
   isDropdownOpen = false;
  constructor(){}
 
