@@ -28,7 +28,7 @@ console.log(offset);
   });
 
   // Construimos la URL con los parámetros de consulta
-  const url = environment.UrlBackend +`?Offset=${offset}&Limit=${limit}`;
+  const url = environment.UrlBackend +`user?Offset=${offset}&Limit=${limit}`;
 
   return this.http.get<any>(url, { headers }).pipe(
     map(response => {
