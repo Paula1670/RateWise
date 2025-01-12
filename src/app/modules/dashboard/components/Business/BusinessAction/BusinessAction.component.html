@@ -6,9 +6,11 @@
     <input
       name="search"
       class="py-2 pl-8 pr-2"
-      placeholder="Buscar por ciudad"
+      placeholder="Buscar por nombre"
       type="text"
-      value=""
+      [formControl]="control"
+
+
       (input)="onSearchChange($event)" />
   </label>
 </div>
@@ -21,7 +23,7 @@
     <input
       name="search"
       class="py-2 pl-8 pr-2"
-      placeholder="Buscar por categoria"
+      placeholder="Buscar por ciudad"
       type="text"
       value=""
       (input)="onSearchChange($event)" />

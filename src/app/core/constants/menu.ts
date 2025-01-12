@@ -17,13 +17,13 @@ export class Menu {
       ],
     },
     {
-      group: 'Collaboration',
+      group: 'Colaboración',
       separator: true,
       items: [
 
         {
           icon: 'assets/icons/heroicons/outline/users.svg',
-          label: 'Users',
+          label: 'Usuarios',
           route: '/dashboard/users',//'/components/table',
         },
       ],

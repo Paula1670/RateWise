@@ -4,11 +4,12 @@ import { TableRowComponent } from '../../components/User/table-row/table-row.com
 import { TableActionComponent } from '../../components/User/table-action/table-action.component';
 import { TableHeaderComponent } from '../../components/User/table-header/table-header.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UsersService } from 'src/app/services/users.service';
 import { userDTOCompleto } from '../../models/userDTOCompleto';
 import { UserDTOSMALL } from '../../models/userDTOSMALL';
+import { Pagination } from '../../models/pagination';
 
 @Component({
   selector: 'app-user',
@@ -23,86 +24,67 @@ import { UserDTOSMALL } from '../../models/userDTOSMALL';
 })
 export class UserComponent implements OnInit {
  @Input() users: UserDTOSMALL[] = [];
-  currentPage: number = 1;
+  control= new FormControl();
+  paginatedUsers: UserDTOSMALL[] = [];
+  pagination: Pagination = {
+    currentPage: 1,
+    totalItems: 0,
+    totalPages: 0,
+    hasNext: false,
+  };
   itemsPerPage: number = 10;
+  currentPage: number = 1;
     constructor(private http: HttpClient, public service:UsersService) {
 
-
-
-
-
-
-
     }
-    getUsers() {
 
-      this.service.GetUser().subscribe({
-        next: (usuarios) => {
-          this.users = usuarios;
+//filtros
+onOrderChange() {
+ this.control.valueChanges.subscribe(query => {
+  this.getUsers();
+  });
+}
+
+    getUsers(): void {
+      const offset = (this.currentPage - 1) * this.itemsPerPage;
+      this.service.getUsers(offset, this.itemsPerPage).subscribe({
+        next: (data) => {
+          this.users = data.users;
+          this.pagination = data.pagination;
+          this.updatePaginatedUsers();
         },
         error: (err) => {
           console.error('Error al obtener usuarios:', err);
-        }
+        },
       });
     }
 
-    get paginatedUsers() {
+    updatePaginatedUsers(): void {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-      return this.users.slice(startIndex, startIndex + this.itemsPerPage);
+      this.paginatedUsers = this.users.slice(startIndex, startIndex + this.itemsPerPage);
     }
 
-    get totalPages() {
-      return Math.ceil(this.users.length / this.itemsPerPage);
+    get totalPages(): number {
+      return Math.ceil(this.pagination.totalItems / this.itemsPerPage);
     }
 
-    changePage(newPage: number) {
+
+    //Paginación
+    changePage(newPage: number): void {
       if (newPage > 0 && newPage <= this.totalPages) {
         this.currentPage = newPage;
+        this.getUsers(); // Llama al servicio para cargar los usuarios de la nueva página
       }
     }
-    /*public toggleUsers(checked: boolean) {
-      this.users.update((users) => {
-        return users.map((user) => {
-          return { ...user, selected: checked };
-        });
-      });
+
+    onItemsPerPageChange(event: Event): void {
+
+      const selectedValue = (event.target as HTMLSelectElement).value;
+      this.itemsPerPage = parseInt(selectedValue, 10);
+      this.currentPage = 1;
+      this.getUsers();
+
+
     }
-    filteredUsers = computed(() => {
-      const search = this.filterService.searchField().toLowerCase();
-      const status = this.filterService.statusField();
-      const order = this.filterService.orderField();
-
-      return this.users()
-        .filter(
-          (user) =>
-            user.name.toLowerCase().includes(search) ||
-            user.username.toLowerCase().includes(search) ||
-            user.email.toLowerCase().includes(search) ||
-            user.phone.includes(search),
-        )
-        .filter((user) => {
-          if (!status) return true;
-          switch (status) {
-            case '1':
-              return user.status === 1;
-            case '2':
-              return user.status === 2;
-            case '3':
-              return user.status === 3;
-            default:
-              return true;
-          }
-        })
-        .sort((a, b) => {
-          const defaultNewest = !order || order === '1';
-          if (defaultNewest) {
-            return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-          } else if (order === '2') {
-            return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
-          }
-          return 0;
-        });
-    });*/
-
     ngOnInit() {this.getUsers();}
 }

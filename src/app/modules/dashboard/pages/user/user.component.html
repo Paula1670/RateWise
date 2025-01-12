@@ -15,7 +15,19 @@
 </div>
 
 <div class="flex min-w-full flex-col rounded-xl border border-muted/20 bg-background p-2">
-  <app-table-action></app-table-action>
+  <div class="flex flex-wrap items-center justify-between gap-2 py-3 px-5">
+    <h3 class="text-sm font-medium text-muted-foreground">Showing 08 of 100 users</h3>
+    <div class="flex flex-wrap gap-2">
+
+      <div class="flex flex-wrap gap-2.5">
+
+        <select name="order" class="w-28 p-2 text-muted-foreground" (change)="onOrderChange()">
+          <option value="1">Más recientes</option>
+          <option value="2">Más antiguos</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <div
     class="scrollbar-thumb-rounded scrollbar-track-rounded grow overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted">
     <table
@@ -24,7 +36,7 @@
       <tr app-table-header ></tr>
       </thead>
       <tbody>
-       @for (user of users; track $index) {
+       @for (user of paginatedUsers; track $index) {
         <tr class="hover:bg-card/50" app-table-row [user]="user"></tr>
         } @empty {
         <tr>
@@ -39,7 +51,7 @@
   <div class="flex flex-wrap items-center justify-between gap-2 py-3 px-5 text-xs text-muted-foreground">
     <div class="order-2 flex items-center gap-2 md:order-1">
       Show
-      <select class="w-16 p-2">
+      <select class="w-16 p-2" (change)="onItemsPerPageChange($event)">
         <option value="5">5</option>
         <option value="10" selected>10</option>
         <option value="20">20</option>
@@ -48,23 +60,28 @@
       </select>
       per page
     </div>
-    <div class="order-1 flex items-center gap-4 md:order-2">
-      <span>1-10 of 100</span>
+
+  <div class="order-1 flex items-center gap-4 md:order-2">
+  <span>{{ pagination.currentPage }} de {{ totalPages }}</span>
+
       <div class="inline-flex items-center gap-1">
         <button
-        (click)="changePage(currentPage - 1)"
+            (click)="changePage(currentPage - 1)"
             [disabled]="currentPage === 1"
-              class="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md text-sm disabled:opacity-50"
-              >
-              <svg-icon src="./assets/icons/heroicons/outline/arrow-long-left.svg" [svgClass]="'h-4 w-4'"> </svg-icon>
-            </button>
+            class="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md text-sm disabled:opacity-50"
+          >
+            <svg-icon src="./assets/icons/heroicons/outline/arrow-long-left.svg" [svgClass]="'h-4 w-4'"></svg-icon>
+          </button>
 
-            <button
-              class="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md text-sm hover:bg-muted-foreground/10"
-              (click)="changePage(currentPage + 1)"
-            [disabled]="currentPage === totalPages">
-              <svg-icon src="./assets/icons/heroicons/outline/arrow-long-right.svg" [svgClass]="'h-4 w-4'"> </svg-icon>
-            </button>
+          <span>Página {{ currentPage }} de {{ totalPages }}</span>
+
+          <button
+            (click)="changePage(currentPage + 1)"
+            [disabled]="currentPage === totalPages"
+            class="inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md text-sm hover:bg-muted-foreground/10"
+          >
+            <svg-icon src="./assets/icons/heroicons/outline/arrow-long-right.svg" [svgClass]="'h-4 w-4'"></svg-icon>
+          </button>
       </div>
     </div>
   </div>
