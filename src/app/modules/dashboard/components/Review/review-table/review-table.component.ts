@@ -60,7 +60,7 @@ export class ReviewTableComponent implements OnInit {
     this.service.GetResenasMejores(this.idBusiness, this.mejoresResenas, this.resenasMasCalidad, this.texto ).subscribe({
       next: (resenas) => {
 
-        this.reviews = resenas;  // Actualiza las reseñas con la respuesta
+        this.reviews = resenas;
 
       },
       error: (err) => {
@@ -70,11 +70,9 @@ export class ReviewTableComponent implements OnInit {
 
   }
   getResenas(id:string, mejoresResenas: boolean, resenasMasCalidad: boolean, texto:string) {
-    console.log(id);
     this.service.GetResenasMejores(this.idBusiness, mejoresResenas, resenasMasCalidad, texto).subscribe({
       next: (resenas) => {
         this.reviews = resenas;
-        console.log(resenas);
       },
       error: (err) => {
         console.error('Error al obtener reseñas:', err);

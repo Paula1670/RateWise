@@ -27,9 +27,15 @@
   <!-- Usuario con más tips -->
   <div *ngIf="topTipUser; else noTips" class="mb-6">
     <h3 class="text-2xl font-semibold mb-3 text-foreground text-left">Usuario más activo</h3>
-    <p class="text-muted-foreground text-sm font-bold text-left">
-      El usuario que ha escrito más cumplidos a este comercio es: <span class="text-foreground">{{usuarioFavorito.name }}</span>
-      con <span class="text-foreground">{{usuarioFavorito.complimentCount }}</span> cumplidos.
+    <p class="text-muted-foreground text-sm font-bold text-left" *ngIf="usuarioFavorito">
+      El usuario que ha escrito más cumplidos a este comercio es: 
+      <span class="text-foreground">{{ usuarioFavorito.name }}</span> 
+      con 
+      <span class="text-foreground">{{ usuarioFavorito.complimentCount }}</span> 
+      cumplidos.
+    </p>
+    <p class="text-muted-foreground text-sm font-bold text-left" *ngIf="!usuarioFavorito">
+      No hay ningún usuario con uno o más cumplidos para este negocio.
     </p>
   </div>
 

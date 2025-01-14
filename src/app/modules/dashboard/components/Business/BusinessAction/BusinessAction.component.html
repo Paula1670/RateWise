@@ -8,10 +8,7 @@
       class="py-2 pl-8 pr-2"
       placeholder="Buscar por nombre"
       type="text"
-      [formControl]="control"
-
-
-      (input)="onSearchChange($event)" />
+      [formControl]="controlName"/>
   </label>
 </div>
 
@@ -24,8 +21,6 @@
       name="search"
       class="py-2 pl-8 pr-2"
       placeholder="Buscar por ciudad"
-      type="text"
-      value=""
-      (input)="onSearchChange($event)" />
+      [formControl]="controlCity"/>/>
   </label>
 </div>

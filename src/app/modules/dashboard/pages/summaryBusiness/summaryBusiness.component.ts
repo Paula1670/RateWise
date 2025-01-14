@@ -28,6 +28,7 @@ export class SummaryBusinessComponent implements OnInit {
         const state = history.state as { business: BusinessDTO };
         if (state?.business) {
           this.business = state.business;
+          console.log("Cargando usuario favorito:", this.usuario);
           this.service.GetUsuarioFavorito(this.business.business_id).subscribe({
             next: (usuarioFavorito: usuarioFavoritoDTO) => {
               this.usuario = usuarioFavorito;

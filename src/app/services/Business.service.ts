@@ -36,9 +36,16 @@ export class BusinessService {
     });
 
     // Construimos la URL con los parámetros de consulta
-    //const url = environment.UrlBackend +`/business?filters=name%7Ceq%7C${nombre}&city%7Ceq%7C${ciudad}&Offset=${offset}&Limit=30`;
+    let url = `${environment.UrlBackend}/business?Offset=${offset}&Limit=30`;
 
-    const url = environment.UrlBackend +`/business?Offset=${offset}&Limit=40`;
+    // Agregar filtros dinámicamente si tienen valor
+    if (nombre) {
+      url += `&filters=name|eq|${nombre}`;
+    }
+
+    if (ciudad) {
+      url += `&filters=city|eq|${ciudad}`;
+    }
 
     return this.http.get<any>(url, { headers }).pipe(
       map(response => {
