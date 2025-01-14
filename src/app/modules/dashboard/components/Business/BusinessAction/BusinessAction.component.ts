@@ -12,7 +12,8 @@ import { BusinessDTO } from '../../../models/businessDTO';
   imports:[AngularSvgIconModule,CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class BusinessActionComponent implements OnInit {
- control= new FormControl();
+  controlName= new FormControl();
+  controlCity= new FormControl();
   @Input() bus: BusinessDTO[] = [];
   constructor(public filterService: TableFilterService) { }
 
