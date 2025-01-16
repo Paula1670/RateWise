@@ -69,17 +69,13 @@ export class BusinessComponent implements OnInit {
         this.updatePaginatedUsers();
       },
       error: (err) => {
-        console.error('Error al obtener usuarios:', err);
+        console.error('Error al obtener negocios:', err);
       },
     });
   }
 
   updatePaginatedUsers(): void {
-    const startIndex = (this.currentPage - 1);
-    this.paginatedBusiness = this.business.slice(
-      startIndex,
-      startIndex + this.itemsPerPage
-    );
+    this.paginatedBusiness = this.business;
   }
 
   // Paginación
@@ -88,13 +84,6 @@ export class BusinessComponent implements OnInit {
       this.currentPage = newPage;
       this.getBusiness();
     }
-  }
-
-  onItemsPerPageChange(event: Event): void {
-    const selectedValue = (event.target as HTMLSelectElement).value;
-    this.itemsPerPage = parseInt(selectedValue, 10);
-    this.currentPage = 1;
-    this.getBusiness();
   }
 
   ngOnInit() {
