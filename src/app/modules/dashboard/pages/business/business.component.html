@@ -1,7 +1,32 @@
 <div>
-  <!-- Header -->
-  <app-BusinessHeader></app-BusinessHeader>
-  <!-- end Header -->
+  
+  <div class="flex mb-4">
+    <label class="relative text-muted-foreground">
+      <div class="absolute left-2.5 top-2.5">
+        <svg-icon src="./assets/icons/heroicons/outline/magnifying-glass.svg" [svgClass]="'h-4 w-4'"></svg-icon>
+      </div>
+      <input
+        name="search-name"
+        class="py-2 pl-8 pr-2"
+        placeholder="Buscar por ciudad"
+        type="text"
+        [formControl]="controlName"
+      />
+    </label>
+  
+    <label class="relative text-muted-foreground ml-4">
+      <div class="absolute left-2.5 top-2.5">
+        <svg-icon src="./assets/icons/heroicons/outline/location-marker.svg" [svgClass]="'h-4 w-4'"></svg-icon>
+      </div>
+      <input
+        name="search-city"
+        class="py-2 pl-8 pr-2"
+        placeholder="Buscar por nombre"
+        type="text"
+        [formControl]="controlCity"
+      />
+    </label>
+  </div>
 
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
     @for (business of paginatedBusiness; track $index) {

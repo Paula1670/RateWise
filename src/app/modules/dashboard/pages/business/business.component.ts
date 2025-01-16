@@ -4,7 +4,7 @@ import { BusinessDTO } from '../../models/businessDTO';
 import { BusinessCardComponent } from '../../components/Business/BusinessCard/BusinessCard.component';
 import { BusinessHeaderComponent } from '../../components/Business/BusinessHeader/BusinessHeader.component';
 import { BusinessService } from 'src/app/services/Business.service';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Pagination } from '../../models/pagination';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -20,11 +20,14 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     NftAuctionsTableComponent,
     AngularSvgIconModule,
     FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class BusinessComponent implements OnInit {
   @Input() business: BusinessDTO[] = [];
   control = new FormControl();
+  controlCity = new FormControl();
+  controlName = new FormControl();
 
   public ciudad: string;
   public businessId: number;
@@ -37,7 +40,7 @@ export class BusinessComponent implements OnInit {
     totalPages: 0,
     hasNext: false,
   };
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 30;
   currentPage: number = 1;
 
   constructor(
@@ -57,6 +60,7 @@ export class BusinessComponent implements OnInit {
   }
 
   getBusiness(): void {
+
     const offset = this.currentPage - 1;
     this.service.getBusiness(offset, this.ciudad, this.nombre).subscribe({
       next: (data) => {
@@ -71,7 +75,7 @@ export class BusinessComponent implements OnInit {
   }
 
   updatePaginatedUsers(): void {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const startIndex = (this.currentPage - 1);
     this.paginatedBusiness = this.business.slice(
       startIndex,
       startIndex + this.itemsPerPage
@@ -94,6 +98,17 @@ export class BusinessComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.controlCity.valueChanges.subscribe((value) => {
+      this.ciudad = value || ''; 
+      this.getBusiness();
+    });
+
+    this.controlName.valueChanges.subscribe((value) => {
+      this.nombre = value || ''; 
+      this.getBusiness();
+    });
+
+   
     this.getBusiness();
   }
 
