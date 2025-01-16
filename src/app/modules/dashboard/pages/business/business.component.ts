@@ -100,4 +100,19 @@ export class BusinessComponent implements OnInit {
   navigateToRoute(business: BusinessDTO): void {
     this.router.navigate(['/dashboard/summary'], { state: { business } });
   }
+
+  delete(id:string){
+    if (id) {
+      this.service.deleteBusiness(id).subscribe(
+        (response) => {
+          console.log('Respuesta del servidor:', response);
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Error al llamar al endpoint:', error);
+          window.location.reload();
+        }
+      );
+    }
+  }
 }
