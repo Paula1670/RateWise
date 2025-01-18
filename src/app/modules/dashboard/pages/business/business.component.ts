@@ -40,7 +40,7 @@ export class BusinessComponent implements OnInit {
     totalPages: 0,
     hasNext: false,
   };
-  itemsPerPage: number = 30;
+  itemsPerPage: number = 10;
   currentPage: number = 1;
 
   constructor(

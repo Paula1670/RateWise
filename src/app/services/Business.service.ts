@@ -36,7 +36,7 @@ export class BusinessService {
     });
 
     // Construimos la URL con los parámetros de consulta
-    let url = `${environment.UrlBackend}/business?Offset=${offset}&Limit=30`;
+    let url = `${environment.UrlBackend}/business?Offset=${offset}&Limit=10`;
 
     // Agregar filtros dinámicamente si tienen valor
     let filters: string[] = [];
